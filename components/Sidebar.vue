@@ -16,28 +16,28 @@
           </a>
         </div>
 
-        <!-- Dailu Use -->
+        <!-- Daily Use -->
         <div class="flex flex-col gap-4">
           <div class="text-sm text-grey">Daily Use</div>
-          <a href="index.html" class="nav-link active">
+          <NuxtLink :to="{ name: 'index' }" class="nav-link">
             <img src="/assets/svgs/ic-grid.svg" alt="">
             Overview
-          </a>
+          </NuxtLink>
 
-          <a href="employees.html" class="nav-link">
+          <NuxtLink :to="{ name: 'employees' }" class="nav-link">
             <img src="/assets/svgs/ic-users.svg" alt="">
             Employees
-          </a>
+          </NuxtLink>
 
-          <a href="my_teams.html" class="nav-link">
+          <NuxtLink :to="{ name: 'teams' }" class="nav-link">
             <img src="/assets/svgs/ic-briefcase.svg" alt="">
             My Teams
-          </a>
+          </NuxtLink>
 
-          <a href="roles.html" class="nav-link">
+          <NuxtLink :to="{ name: 'roles' }" class="nav-link">
             <img src="/assets/svgs/ic-flag.svg" alt="">
             Roles
-          </a>
+          </NuxtLink>
         </div>
 
         <!-- Others -->
