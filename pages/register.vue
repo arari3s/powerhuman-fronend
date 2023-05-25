@@ -35,6 +35,8 @@
 
 <script>
 export default {
+  auth: 'guest',
+
   data() {
     return {
       register: {
@@ -44,6 +46,7 @@ export default {
       }
     }
   },
+
   methods: {
     async userRegister() {
       try {

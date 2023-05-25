@@ -30,6 +30,8 @@
 
 <script>
 export default {
+  auth: 'guest',
+
   data() {
     return {
       login: {
@@ -38,6 +40,7 @@ export default {
       }
     }
   },
+
   methods: {
     async userLogin() {
       try {

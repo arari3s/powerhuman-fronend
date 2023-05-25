@@ -7,6 +7,7 @@
       Manage your employees to achieve <br>
       a bigger goals for your company
     </p>
+
     <form class="w-full card">
       <div class="form-group">
         <label for="" class="text-grey">Role Name</label>
@@ -23,6 +24,7 @@
           </li>
         </ul>
       </div>
+
       <a href="roles.html" class="w-full btn btn-primary mt-[14px]">
         Save Role
       </a>
@@ -32,6 +34,7 @@
 
 <script>
 export default {
+  middleware: 'auth',
   layout: 'form',
 }
 </script>
