@@ -5,13 +5,15 @@
       <div class="form-group">
         <label for="" class="text-grey">Companies</label>
 
-        <select v-model="selectedCompany" name="companies" id=""
+        <p v-if="$fetchState.pending">Fetching companies...</p>
+        <select v-else v-model="selectedCompany" name="companies"
           class="appearance-none input-field form-icon-chevron_down">
           <option :value="company.id" v-for="company in companies.data.data.data">
             {{ company.name }}
           </option>
         </select>
       </div>
+
       <a href="" class="w-full border btn btn-primary mt-[14px]">
         Create New Company
       </a>
@@ -30,7 +32,7 @@ export default {
   },
 
   async fetch() {
-    this.companies = await this.$axios.get('/company')
+    this.companies = await this.$axios.get('/company?limit=100')
   }
 }
 </script>
