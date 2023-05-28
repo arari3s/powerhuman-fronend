@@ -5,9 +5,10 @@
       <div class="form-group">
         <label for="" class="text-grey">Companies</label>
 
-        <select name="" id="" class="appearance-none input-field form-icon-chevron_down">
-          <option value="" selected>
-            Company Name
+        <select v-model="selectedCompany" name="companies" id=""
+          class="appearance-none input-field form-icon-chevron_down">
+          <option :value="company.id" v-for="company in companies.data.data.data">
+            {{ company.name }}
           </option>
         </select>
       </div>
@@ -23,14 +24,13 @@ export default {
   middleware: 'auth',
   data() {
     return {
-      mountains: []
+      companies: [],
+      selectedCompany: '',
     }
   },
 
   async fetch() {
-    this.mountains = await fetch(
-      'https://api.nuxtjs.dev/mountains'
-    ).then(res => res.json())
+    this.companies = await this.$axios.get('/company')
   }
 }
 </script>
