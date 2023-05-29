@@ -15,8 +15,12 @@
       </div>
 
       <button @click="openCompany()" type="button" class="w-full border btn btn-primary mt-[14px]">
-        Create New Company
+        Continue
       </button>
+      <div class="text-center">or</div>
+      <NuxtLink :to="{ name: 'companies-create' }" class="w-full border btn btn-white">
+        Create New Company
+      </NuxtLink>
     </div>
   </section>
 </template>
