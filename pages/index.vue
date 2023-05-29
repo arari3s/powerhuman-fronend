@@ -14,9 +14,9 @@
         </select>
       </div>
 
-      <a href="" class="w-full border btn btn-primary mt-[14px]">
+      <button @click="openCompany()" type="button" class="w-full border btn btn-primary mt-[14px]">
         Create New Company
-      </a>
+      </button>
     </div>
   </section>
 </template>
@@ -33,6 +33,16 @@ export default {
 
   async fetch() {
     this.companies = await this.$axios.get('/company?limit=100')
-  }
+  },
+  methods: {
+    openCompany() {
+      this.$router.push({
+        name: 'companies-id',
+        params: {
+          id: this.selectedCompany,
+        }
+      })
+    }
+  },
 }
 </script>
