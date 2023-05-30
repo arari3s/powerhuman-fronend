@@ -5,15 +5,22 @@
       <div class="form-group">
         <label for="" class="text-grey">Companies</label>
 
-        <select name="" id="" class="appearance-none input-field form-icon-chevron_down">
-          <option value="" selected>
-            Company Name
+        <p v-if="$fetchState.pending">Fetching companies...</p>
+        <select v-else v-model="selectedCompany" name="companies"
+          class="appearance-none input-field form-icon-chevron_down">
+          <option :value="company.id" v-for="company in companies.data.data.data">
+            {{ company.name }}
           </option>
         </select>
       </div>
-      <a href="" class="w-full border btn btn-primary mt-[14px]">
+
+      <button @click="openCompany()" type="button" class="w-full border btn btn-primary mt-[14px]">
+        Continue
+      </button>
+      <div class="text-center">or</div>
+      <NuxtLink :to="{ name: 'companies-create' }" class="w-full border btn btn-white">
         Create New Company
-      </a>
+      </NuxtLink>
     </div>
   </section>
 </template>
@@ -21,5 +28,25 @@
 <script>
 export default {
   middleware: 'auth',
+  data() {
+    return {
+      companies: [],
+      selectedCompany: '',
+    }
+  },
+
+  async fetch() {
+    this.companies = await this.$axios.get('/company?limit=100')
+  },
+  methods: {
+    openCompany() {
+      this.$router.push({
+        name: 'companies-id',
+        params: {
+          id: this.selectedCompany,
+        }
+      })
+    }
+  },
 }
 </script>
