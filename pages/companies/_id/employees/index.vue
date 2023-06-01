@@ -216,5 +216,19 @@
 export default {
   middleware: 'auth',
   layout: 'dashboard',
+  data() {
+    return {
+      teams: [],
+    }
+  },
+
+  async fetch() {
+    this.teams = await this.$axios.get('/team', {
+      params: {
+        company_id: this.$route.params.id,
+        limit: 100,
+      }
+    })
+  },
 }
 </script>
