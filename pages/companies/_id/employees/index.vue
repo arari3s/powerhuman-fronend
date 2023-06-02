@@ -218,12 +218,12 @@ export default {
   layout: 'dashboard',
   data() {
     return {
-      teams: [],
+      employees: [],
     }
   },
 
   async fetch() {
-    this.teams = await this.$axios.get('/team', {
+    this.employees = await this.$axios.get('/employee', {
       params: {
         company_id: this.$route.params.id,
         limit: 100,
