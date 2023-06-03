@@ -39,9 +39,10 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:gap-10 lg:gap-3">
-        <p v-if="$fetchState.pending">Fetching teams...</p>
-        <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0" v-else v-for="team in teams.data.data.data">
+      <p v-if="$fetchState.pending">Fetching teams...</p>
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:gap-10 lg:gap-3" v-else>
+        <div class="items-center card py-6 md:!py-10 md:!px-[38px] !gap-y-0" v-for="team in teams.data.data.data"
+          :key="team">
           <a href="#" class="absolute inset-0 focus:ring-2 ring-primary rounded-[26px]"></a>
           <img :src="team.icon" alt="icon">
           <div class="mt-6 mb-1 font-semibold text-center text-dark">
