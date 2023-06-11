@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label for="" class="text-grey">Email Address</label>
-        <input type="email" class="input-field disabled:bg-grey disabled:outline-none" value="angga@yourcompany.com"
+        <input type="email" class="input-field disabled:bg-grey disabled:outline-none" :value="this.$auth.user.email"
           disabled>
       </div>
 
@@ -43,5 +43,14 @@
 export default {
   middleware: 'auth',
   layout: 'form',
+  data() {
+    return {
+      team: {
+        name: '',
+        email: '',
+        password: ''
+      }
+    }
+  },
 }
 </script>
