@@ -9,10 +9,11 @@
       growing bigger and bigger
     </p>
 
-    <form class="w-full card">
+    <form class="w-full card" @submit.prevent="createTeam">
       <div class="mb-[2px] mx-auto">
         <img src="/assets/svgs/ric-box.svg" alt="">
       </div>
+
       <div class="form-group">
         <label for="" class="text-grey">Email Address</label>
         <input type="email" class="input-field disabled:bg-grey disabled:outline-none" :value="this.$auth.user.email"
@@ -21,7 +22,7 @@
 
       <div class="form-group">
         <label for="" class="text-grey">Team Name</label>
-        <input type="text" class="input-field" value="Growth Marketing">
+        <input type="text" class="input-field" value="Growth Marketing" v-model="team.name">
       </div>
 
       <div class="form-group">
@@ -32,9 +33,9 @@
         </select>
       </div>
 
-      <a href="my_teams.html" class="w-full btn btn-primary mt-[14px]">
+      <button type="submit" class="w-full btn btn-primary mt-[14px]">
         Continue
-      </a>
+      </button>
     </form>
   </section>
 </template>
@@ -47,10 +48,25 @@ export default {
     return {
       team: {
         name: '',
-        email: '',
-        password: ''
+        company_id: this.$route.params.id,
       }
     }
   },
+
+  methods: {
+    async createTeam() {
+      try {
+        // Send Registration Data to Server
+        let response = await this.$axios.post('/team', this.team)
+
+        // Redirect to my team page
+        this.$router.push({ name: 'companies-id-teams' })
+
+        console.log(response)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 }
 </script>
